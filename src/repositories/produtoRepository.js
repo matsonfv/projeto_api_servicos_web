@@ -8,7 +8,7 @@ const getAllProdutos = async () => {
     return resultado.rows;
 };
 
-const getProdutoByID = async (id) => {
+const getProdutosByID = async (id) => {
     const sql = 'SELECT * FROM produtos WHERE id = $1';
     const resultado = await pool.query(sql, [id]);
 
@@ -22,4 +22,4 @@ const createProduto = async (nome, preco, descricao) => {
     return resultado.rows[0];
 };
 
-module.exports = {getAllProdutos, getProdutoByID, createProduto};
+module.exports = {getAllProdutos, getProdutosByID, createProduto};
