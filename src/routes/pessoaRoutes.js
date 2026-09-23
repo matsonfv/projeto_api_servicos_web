@@ -4,7 +4,7 @@ const PessoaController = require('../controllers/pessoaController');
 
 router.get('/', PessoaController.listarPessoas);
 router.get('/:id', PessoaController.buscarPessoasByID);
-router.get('/:cpf', PessoaController.buscarPessoasByCPF);
+router.get('/cpf/:cpf', PessoaController.buscarPessoasByCPF);
 router.post('/', PessoaController.criarPessoas);
 
 module.exports = router;

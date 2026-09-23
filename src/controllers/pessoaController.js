@@ -19,6 +19,7 @@ const buscarPessoasByID = async (req, res) => {
         const pessoa = await PessoaRepository.getPessoasByID(id);
 
         if (!pessoa) {
+            alert("Usuário não encontrado");
             return res.status(404).json({ mensagem: 'Usuário não encontrado.' });
         }
 
@@ -36,6 +37,7 @@ const buscarPessoasByCPF = async (req, res) => {
         const pessoa = await PessoaRepository.getPessoasByCPF(cpf);
 
         if (!pessoa) {
+            alert("Usuário não encontrado");
             return res.status(404).json({ mensagem: 'Usuário não encontrado.' });
         }
 
@@ -45,13 +47,12 @@ const buscarPessoasByCPF = async (req, res) => {
         return res.status(500).json({ mensagem: 'Erro interno no servidor.' });
     }
 };
-
 // Criar pessoa 
 const criarPessoas = async (req, res) => {
     try {
         const { nome, email, telefone, cpf, senha } = req.body;
 
-        if (!nome || email || cpf || telefone || senha === undefined) {
+        if (!nome || !email || !cpf || !telefone || senha === undefined) {
             return res.status(400).json({ mensagem: 'Campo obrigatórios não preenchidos.' });
         }
 
